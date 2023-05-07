@@ -12,15 +12,15 @@ public class PseudoColoring {
 
         BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
-        // Loop through each pixel in the image
+        // Проходим по каждому пикселю в изображении
         for(int x=0; x<width; x++) {
             for(int y=0; y<height; y++) {
                 Color color = new Color(originalImage.getRGB(x, y));
 
-                // Convert the RGB color to grayscale
+                // Конвертируем цвет RGB в оттенки серого
                 int grayValue = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
 
-                // Map the grayscale value to a color
+                // Отображаем оттенок серого в соответствующий цвет
                 if(grayValue < 85) {
                     newImage.setRGB(x, y, Color.BLUE.getRGB());
                 } else if(grayValue < 170) {
