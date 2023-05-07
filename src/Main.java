@@ -1,5 +1,17 @@
 import java.io.IOException;
 
+/*
+java.awt.Color - библиотека для работы с цветами в Java.
+java.awt.Graphics - библиотека для рисования на различных поверхностях в Java.
+java.awt.image.BufferedImage - библиотека для работы с изображениями в Java.
+java.io.File - библиотека для работы с файлами в Java.
+javax.imageio.ImageIO - библиотека для чтения и записи изображений в Java.
+java.io.IOException - это исключение, которое может быть выброшено при работе с файлами в Java.
+
+Эти библиотеки являются стандартными библиотеками Java.
+Они входят в стандартный пакет java.
+*/
+
 public class Main {
     public static void main(String[] args) throws IOException {
 
@@ -48,5 +60,7 @@ public class Main {
         /*Соляризация изображения. Этот код реализует алгоритм соляризации изображения. Алгоритм проходит через каждый пиксель входного изображения, применяет к нему соляризацию и
         устанавливает новый цвет пикселя в выходном изображении.*/
         SolarizeImage.solarizeImage();
+
+        NegativeWithThreshold.negativeWithThreshold();
     }
 }

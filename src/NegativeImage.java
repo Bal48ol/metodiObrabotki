@@ -14,6 +14,9 @@ public class NegativeImage {
         int width = image.getWidth();
         int height = image.getHeight();
 
+        // Создание объектов для двух новых изображений
+        BufferedImage negativeImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
         // Проход по каждому пикселю изображения
         for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
@@ -31,33 +34,12 @@ public class NegativeImage {
                 int invertedPixel = (alpha << 24) | ((255 - red) << 16) | ((255 - green) << 8) | (255 - blue);
 
                 // Запись инвертированного значения пикселя в изображение для негатива
-                image.setRGB(x, y, invertedPixel);
-
-
-                // Пороговое значение
-                int threshold = 128;
-
-                // Вычисление инвертированного значения пикселя для негатива с порогом
-                int invertedPixelThreshold;
-                if ((red + green + blue) / 3 > threshold) {
-                    invertedPixelThreshold = invertedPixel;
-                } else {
-                    int invertedRed = 255 - red;
-                    int invertedGreen = 255 - green;
-                    int invertedBlue = 255 - blue;
-                    invertedPixelThreshold = (alpha << 24) | (invertedRed << 16) | (invertedGreen << 8) | invertedBlue;
-                }
-
-                // Запись инвертированного значения пикселя в изображение для негатива с порогом
-                image.setRGB(x, y, invertedPixelThreshold);
+                negativeImage.setRGB(x, y, invertedPixel);
             }
         }
 
         // Сохранение полученных изображений
         File outputNegative = new File("C:\\Users\\dayof\\IdeaProjects\\metodiObrabotki\\img\\negative_image.jpg");
-        ImageIO.write(image, "jpg", outputNegative);
-
-        File outputNegativeThreshold = new File("C:\\Users\\dayof\\IdeaProjects\\metodiObrabotki\\img\\negative_threshold_image.jpg");
-        ImageIO.write(image, "jpg", outputNegativeThreshold);
+        ImageIO.write(negativeImage, "jpg", outputNegative);
     }
 }
